@@ -1,14 +1,19 @@
 package {
 
 import com.RootScreen;
+import com.startup.HeliAttackContext;
 
 import flash.display.Sprite;
+
+import org.robotlegs.mvcs.Context;
+
 import starling.core.Starling;
 import starling.events.Event;
 
 public class HeliAttack extends Sprite {
 
-    private var _startling:Starling
+    private var _startling:Starling;
+    private var _context:HeliAttackContext
 
     public function HeliAttack() {
         super();
@@ -19,6 +24,14 @@ public class HeliAttack extends Sprite {
 
 
     private function onRootCreated(event:Event):void {
+        _startling.removeEventListener(Event.ROOT_CREATED, onRootCreated);
+
+        var rootScreen:RootScreen=_startling.root as RootScreen;
+        _context=new HeliAttackContext(rootScreen,false);
+        _context.heliAttack=this;
+        _context.starling=_startling;
+        _context.startup();
+
 
     }
 }
