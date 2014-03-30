@@ -1,7 +1,9 @@
 /**
  * Created by Wheeler on 27.03.2014.
  */
-package com.application {
+package com.common.command {
+import com.common.*;
+
 import org.robotlegs.mvcs.StarlingCommand;
 
 public class AsyncCommand extends StarlingCommand {

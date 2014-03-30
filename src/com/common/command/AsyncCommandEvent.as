@@ -1,7 +1,7 @@
 /**
  * Created by Wheeler on 27.03.2014.
  */
-package com.application {
+package com.common.command {
 import flash.events.Event;
 
 

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project name="Generate Resource Map" default="run script">
+    <property file="generateResourceMap.properties"/>
+    <target name="run script">
+        <echo >Creating script to call it via ant </echo>
+        <echo file="${basedir}/${jsfl.active.script.name}" append="false">
+            fl.outputPanel.clear();
+            var rootFolder=fl.scriptURI;
+            rootFolder=rootFolder.split("/");
+            var index=rootFolder.indexOf("tools");
+
+            rootFolder=rootFolder.slice(0,index);
+            rootFolder=rootFolder.join("/");
+
+            var targetScriptURI=rootFolder+"/"+"${save.resource.map.script.path.from.project.root}";
+            fl.runScript(targetScriptURI);
+
+            params.sourceFolder=rootFolder+"/"+"${path.to.asset.folder.from.project.root}";
+            params.sourceFolderReplacement="${path.to.asset.folder.from.swf}";
+            params.resourceMapURI=rootFolder+"/"+"${resource.map.uri.from.project.toot}";
+
+            saveResourceMap();
+        </echo>
+        <echo >Executing of created script</echo>
+        <exec executable="${flashCSPath}">
+        <!--<exec executable="notepad">-->
+            <arg line="${basedir}/${jsfl.active.script.name}"/>
+
+        </exec>
+        <echo >Removing of created script</echo>
+        <delete file="${basedir}/${jsfl.active.script.name}"></delete>
+        <echo >Task complete</echo>
+    </target>
+</project>

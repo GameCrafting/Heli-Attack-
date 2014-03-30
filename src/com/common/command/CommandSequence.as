@@ -1,7 +1,7 @@
 /**
  * Created by Wheeler on 27.03.2014.
  */
-package com.application {
+package com.common.command {
 import flash.utils.getDefinitionByName;
 import flash.utils.getQualifiedClassName;
 
@@ -36,14 +36,15 @@ public class CommandSequence extends AsyncCommand {
             return;
         }
         var currentCommandType:Class=_commandTypeList.shift();
-        var currentCommandInstance:Object=new currentCommandType();
-        injector.injectInto(currentCommandInstance);
-        var waitForResponse:Boolean=(currentCommandInstance is AsyncCommand);
+        _currentCommand=new currentCommandType();
+        injector.injectInto(_currentCommand);
+        var waitForResponse:Boolean=(_currentCommand is AsyncCommand);
         if(waitForResponse){
             subscribe();
         }
-        currentCommandInstance.execute();
+        _currentCommand.execute();
         if(!waitForResponse){
+            _currentCommand=null;
             advanceQueue();
         }
 
@@ -51,38 +52,16 @@ public class CommandSequence extends AsyncCommand {
 
     private function onAsyncCommandComplete(event:AsyncCommandEvent):void {
         if(event.command!=_currentCommand) return;
-        var mappedParamsCurrent:Array=event.params;
-        var mappedParamsLastLast:Array=[];
-
-
-
-    }
-
-
-    private function mapParams(value:Array):Array
-    {
-        var paramsLast:Array=[];
-        var length:int=(value)?value.length:0;
-        var currentParam:Object;
-        var currentParamType:Class;
-        for(var i:int=0;i<length;i++){
-            currentParam=value[i];
-            currentParamType=getDefinitionByName(getQualifiedClassName(currentParam)) as Class;
-            if(injector.hasMapping(currentParamType)) continue;
-
-        }
-    }
-    private function removeParams(value:Array):void
-    {
+        unSubscribe()
+        _currentCommand=null;
+        advanceQueue();
 
     }
-
-
-
 
 
     private function onAsyncCommandError(event:AsyncCommandEvent):void {
-
+        unSubscribe();
+        onCommandError();
     }
 
     private function subscribe():void

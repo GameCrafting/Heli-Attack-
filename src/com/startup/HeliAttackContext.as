@@ -7,6 +7,8 @@
  */
 package com.startup {
 import com.startup.bootstrap.BootstrapCommands;
+import com.startup.bootstrap.BootstrapModels;
+import com.startup.bootstrap.BootstrapServices;
 import com.startup.bootstrap.BootstrapValues;
 
 import org.robotlegs.mvcs.StarlingContext;
@@ -31,6 +33,8 @@ public class HeliAttackContext extends StarlingContext {
     override public function startup():void {
 
         new BootstrapValues(this,injector);
+        new BootstrapServices(injector);
+        new BootstrapModels(injector);
         new BootstrapCommands(commandMap)
         super.startup();
     }
