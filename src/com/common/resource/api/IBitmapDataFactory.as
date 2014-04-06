@@ -10,7 +10,7 @@ import flash.display.BitmapData;
 
 public interface IBitmapDataFactory {
 
-    function getBitmapDataReference(resourceId:String):BitmapData
+    function getBitmapDataInstance(resourceId:String):BitmapData
 
 }
 }

@@ -11,7 +11,9 @@ public class ApplicationInitializationCommandSequence extends CommandSequence {
 
 
     override protected function startExecution():void {
+        addCommand(InitializeLayerGroupCommand);
         addCommand(InitializeConfigurationModelCommand);
+        addCommand(AdvanceStartUpPreLoaderStateCommand);
         addCommand(InitializeResourceManagerCommand);
 
         super.startExecution();

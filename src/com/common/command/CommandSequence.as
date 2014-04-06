@@ -27,6 +27,17 @@ public class CommandSequence extends AsyncCommand {
           advanceQueue();
     }
 
+
+    override public function cancel():void {
+        unSubscribe();
+        if(_currentCommand){
+            _currentCommand.cancel();
+            _currentCommand=null;
+        }
+        _commandTypeList=null;
+        onCommandCancel();
+    }
+
     public function advanceQueue():void
     {
         if(_currentCommand) return;
@@ -52,7 +63,7 @@ public class CommandSequence extends AsyncCommand {
 
     private function onAsyncCommandComplete(event:AsyncCommandEvent):void {
         if(event.command!=_currentCommand) return;
-        unSubscribe()
+        unSubscribe();
         _currentCommand=null;
         advanceQueue();
 
@@ -60,19 +71,31 @@ public class CommandSequence extends AsyncCommand {
 
 
     private function onAsyncCommandError(event:AsyncCommandEvent):void {
+        if(event.command!=_currentCommand) return;
         unSubscribe();
         onCommandError();
     }
+
+    private function onAsyncCommandCancel(event:AsyncCommandEvent):void {
+        if(event.command!=_currentCommand) return;
+        unSubscribe();
+        _currentCommand=null;
+        advanceQueue();
+    }
+
+
 
     private function subscribe():void
     {
         eventDispatcher.addEventListener(AsyncCommandEvent.COMMAND_COMPLETE,onAsyncCommandComplete);
         eventDispatcher.addEventListener(AsyncCommandEvent.COMMAND_ERROR,onAsyncCommandError);
+        eventDispatcher.addEventListener(AsyncCommandEvent.COMMAND_CANCEL,onAsyncCommandCancel);
     }
     private function unSubscribe():void
     {
         eventDispatcher.removeEventListener(AsyncCommandEvent.COMMAND_COMPLETE,onAsyncCommandComplete);
         eventDispatcher.removeEventListener(AsyncCommandEvent.COMMAND_ERROR,onAsyncCommandError);
+        eventDispatcher.removeEventListener(AsyncCommandEvent.COMMAND_CANCEL,onAsyncCommandCancel);
     }
 
 }

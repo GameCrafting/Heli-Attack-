@@ -32,13 +32,6 @@ public class ListUtil {
         }
         return result;
     }
-    static public function createListWithValue(value:Object,length:int):Array
-    {
-        var result:Array=[];
-        for(var i:int=0;i<length;i++){
-            result.push(value);
-        }
-        return result;
-    }
+
 }
 }

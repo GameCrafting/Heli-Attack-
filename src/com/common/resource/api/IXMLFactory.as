@@ -8,6 +8,6 @@
 package com.common.resource.api {
 public interface IXMLFactory {
 
-    function getXMLReference(resourceId:String):XML
+    function getXMLInstance(resourceId:String):XML
 }
 }

@@ -10,7 +10,7 @@ import starling.textures.TextureAtlas;
 
 public interface ITextureAtlasFactory {
 
-    function getTextureAtlasReference(resourceId:String):TextureAtlas
+    function getTextureAtlasInstance(resourceId:String):TextureAtlas
 
 
 }

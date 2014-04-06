@@ -7,14 +7,15 @@
  */
 package com.startup.bootstrap {
 import com.common.configuration.model.ConfigurationModel;
+import com.preloader.model.PreLoaderModel;
 
 import org.robotlegs.core.IInjector;
-import org.swiftsuspenders.Injector;
 
 public class BootstrapModels {
     public function BootstrapModels(injector:IInjector) {
 
         injector.mapSingleton(ConfigurationModel)
+        injector.mapSingleton(PreLoaderModel);
     }
 }
 }

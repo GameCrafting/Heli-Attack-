@@ -9,7 +9,9 @@ package com.startup {
 import com.startup.bootstrap.BootstrapCommands;
 import com.startup.bootstrap.BootstrapModels;
 import com.startup.bootstrap.BootstrapServices;
+import com.startup.bootstrap.BootstrapStateMachine;
 import com.startup.bootstrap.BootstrapValues;
+import com.startup.bootstrap.BootstrapViews;
 
 import org.robotlegs.mvcs.StarlingContext;
 
@@ -35,7 +37,9 @@ public class HeliAttackContext extends StarlingContext {
         new BootstrapValues(this,injector);
         new BootstrapServices(injector);
         new BootstrapModels(injector);
-        new BootstrapCommands(commandMap)
+        new BootstrapCommands(commandMap);
+        new BootstrapViews(mediatorMap);
+        new BootstrapStateMachine(injector);
         super.startup();
     }
 }

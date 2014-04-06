@@ -24,7 +24,6 @@ public class InitializeConfigurationModelCommand extends StarlingCommand {
 
     override public function execute():void {
         configurationModel.resourceMapUrlList.push("assets/xml/resourceMap.xml");
-        trace(this);
     }
 }
 }

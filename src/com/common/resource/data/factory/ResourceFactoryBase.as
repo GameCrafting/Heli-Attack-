@@ -14,10 +14,14 @@ public class ResourceFactoryBase {
 
     private var _type:String;
     private var _fileDataDictTaggedByResourceId:Dictionary;
+    private var _resourceLoadedStateDictTaggedByResourceId:Dictionary;
+    private var _sourceDict:Dictionary
 
     public function ResourceFactoryBase(type:String) {
         _type=type;
         _fileDataDictTaggedByResourceId=new Dictionary();
+        _resourceLoadedStateDictTaggedByResourceId=new Dictionary();
+        _sourceDict=new Dictionary();
 
     }
 
@@ -27,11 +31,19 @@ public class ResourceFactoryBase {
 
     public function saveSourceFilesForResources(resourceIList:Array,fileDataList:Vector.<FileData>):void
     {
+        var resourceLoaded:Boolean=true;
+        for(var i:int=0;i<fileDataList.length;i++){
+            if(!fileDataList[i].failedToLoad) continue;
+            resourceLoaded=false;
+            break;
+        }
+
+
         var resourceId:String;
-        for(var i:int=0;i<resourceIList.length;i++){
+        for(i=0;i<resourceIList.length;i++){
             resourceId=resourceIList[i];
             _fileDataDictTaggedByResourceId[resourceId]=fileDataList
-
+            _resourceLoadedStateDictTaggedByResourceId[resourceId]=resourceLoaded;
         }
     }
     public function getSourceFilesByResourceId(resourceId:String):Vector.<FileData>
@@ -40,12 +52,33 @@ public class ResourceFactoryBase {
         return result;
     }
 
-
-    public function containsSourceFilesForResource(resourceId:String):Boolean
+    public function isResourceLoadPerformed(resourceId:String):Boolean
     {
         var fileDataList:Vector.<FileData>=getSourceFilesByResourceId(resourceId);
         var result:Boolean=(fileDataList!=null);
-        return result
+        return result;
     }
+
+    public function isResourcesLoaded(resourceId:String):Boolean
+    {
+        var result:Boolean=_resourceLoadedStateDictTaggedByResourceId[resourceId];
+        return result;
+    }
+    public function removeResource(value:Object):void
+    {
+
+    }
+
+    protected function saveSource(key:String,value:Object):void
+    {
+       _sourceDict[key]=value;
+    }
+    protected function getSource(key:String):Object
+    {
+        var result:Object=_sourceDict[key];
+        return result;
+    }
+
+
 }
 }

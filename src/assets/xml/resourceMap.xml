@@ -1,0 +1,48 @@
+<resourceMap>
+  <atlas id="character_set_1">
+    <image url="assets/graphic/character_set_1.png"/>
+    <description url="assets/graphic/character_set_1.xml"/>
+  </atlas>
+  <atlas id="image 4274">
+    <image url="assets/graphic/icons/image 4274.png"/>
+    <description url="assets/graphic/icons/image 4274.xml"/>
+  </atlas>
+  <atlas id="image 4286">
+    <image url="assets/graphic/icons/image 4286.png"/>
+    <description url="assets/graphic/icons/image 4286.xml"/>
+  </atlas>
+  <atlas id="image 4289">
+    <image url="assets/graphic/icons/image 4289.png"/>
+    <description url="assets/graphic/icons/image 4289.xml"/>
+  </atlas>
+  <atlas id="image 4292">
+    <image url="assets/graphic/icons/image 4292.png"/>
+    <description url="assets/graphic/icons/image 4292.xml"/>
+  </atlas>
+  <atlas id="image 4295">
+    <image url="assets/graphic/icons/image 4295.png"/>
+    <description url="assets/graphic/icons/image 4295.xml"/>
+  </atlas>
+  <atlas id="image 4852">
+    <image url="assets/graphic/icons/image 4852.png"/>
+    <description url="assets/graphic/icons/image 4852.xml"/>
+  </atlas>
+  <atlas id="image 4865">
+    <image url="assets/graphic/icons/image 4865.png"/>
+    <description url="assets/graphic/icons/image 4865.xml"/>
+  </atlas>
+  <atlas id="image 4874">
+    <image url="assets/graphic/icons/image 4874.png"/>
+    <description url="assets/graphic/icons/image 4874.xml"/>
+  </atlas>
+  <atlas id="image 4884">
+    <image url="assets/graphic/icons/image 4884.png"/>
+    <description url="assets/graphic/icons/image 4884.xml"/>
+  </atlas>
+  <atlas id="image 3576">
+    <image url="assets/graphic/images/image 3576.JPG"/>
+    <description url="assets/graphic/images/image 3576.xml"/>
+  </atlas>
+  <xml id="description" url="assets/xml/description.xml"/>
+  <xml id="resourceMap" url="assets/xml/resourceMap.xml"/>
+</resourceMap>

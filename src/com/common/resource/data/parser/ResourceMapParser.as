@@ -40,7 +40,7 @@ public class ResourceMapParser {
             currentNode=nodeList[i];
             currentNodeName=currentNode.name();
             currentParseNodeMethod=_parseNodeMethodDict[currentNodeName];
-            if(!currentParseNodeMethod) continue;
+            if(currentParseNodeMethod==null) continue;
             currentParseNodeMethod(currentNode,resourceService);
 
         }

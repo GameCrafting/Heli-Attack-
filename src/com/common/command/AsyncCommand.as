@@ -17,6 +17,10 @@ public class AsyncCommand extends StarlingCommand {
         startExecution();
 
     }
+    public function cancel():void
+    {
+        onCommandCancel();
+    }
 
 
     protected function startExecution():void
@@ -36,6 +40,16 @@ public class AsyncCommand extends StarlingCommand {
     protected function onCommandComplete(...params):void
     {
         var asyncCommandEvent:AsyncCommandEvent=new AsyncCommandEvent(AsyncCommandEvent.COMMAND_COMPLETE);
+        asyncCommandEvent.command=this
+        asyncCommandEvent.params=params;
+        dispatch(asyncCommandEvent);
+
+        commandMap.release(this);
+    }
+
+    protected function onCommandCancel(...params):void
+    {
+        var asyncCommandEvent:AsyncCommandEvent=new AsyncCommandEvent(AsyncCommandEvent.COMMAND_CANCEL);
         asyncCommandEvent.command=this
         asyncCommandEvent.params=params;
         dispatch(asyncCommandEvent);

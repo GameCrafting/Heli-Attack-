@@ -10,7 +10,6 @@ import com.common.dataTypes.ListenerGroup;
 import com.common.file.data.FileData;
 import com.common.file.data.FileLoadProcess;
 import com.common.util.ListUtil;
-
 import flash.utils.Dictionary;
 
 public class FileService {
@@ -152,7 +151,7 @@ public class FileService {
 
 
     }
-    public function removeFileListLoadListener(value,withAnyPostParams:Boolean,postParams:Array=null):void
+    public function removeFileListLoadListener(value:Function,withAnyPostParams:Boolean=true,postParams:Array=null):void
     {
         for each(var listenerGroup:ListenerGroup in _fileListLoadListenerGroup){
             if(withAnyPostParams){
