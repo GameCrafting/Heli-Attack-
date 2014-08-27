@@ -1,0 +1,42 @@
+<document>
+  <frames>
+    <frame name="frame" x="11" y="12" width="30" height="35"/>
+    <frame name="frame_1" x="41" y="12" width="30" height="35"/>
+    <frame name="frame_2" x="71" y="12" width="30" height="35"/>
+    <frame name="frame_3" x="101" y="12" width="30" height="35"/>
+    <frame name="frame_4" x="134" y="12" width="30" height="35"/>
+    <frame name="frame_5" x="169" y="12" width="30" height="35"/>
+    <frame name="frame_6" x="202" y="11" width="30" height="35"/>
+    <frame name="frame_7" x="238" y="12" width="30" height="35"/>
+    <frame name="frame_8" x="12" y="53" width="35" height="25"/>
+    <frame name="frame_9" x="52" y="53" width="35" height="25"/>
+    <frame name="frame_10" x="6" y="120" width="35" height="25"/>
+    <frame name="frame_11" x="41" y="119" width="35" height="25"/>
+    <frame name="frame_12" x="76" y="116" width="35" height="25"/>
+    <frame name="frame_13" x="116" y="121" width="35" height="25"/>
+    <frame name="frame_14" x="151" y="121" width="35" height="25"/>
+    <frame name="frame_15" x="186" y="121" width="35" height="25"/>
+    <frame name="frame_16" x="226" y="121" width="35" height="25"/>
+    <frame name="frame_17" x="264" y="121" width="35" height="25"/>
+  </frames>
+  <animations>
+    <animation name="body_animation" namePath="animations/body/body_animation">
+      <frame x="0" y="0" source="frame"/>
+      <frame x="0" y="0" source="frame_1"/>
+      <frame x="0" y="0" source="frame_2"/>
+      <frame x="0" y="0" source="frame_3"/>
+    </animation>
+    <animation name="legs_idle" namePath="animations/legs/legs_idle">
+      <frame x="0" y="0" source="frame_8"/>
+      <frame x="0" y="0" source="frame_9"/>
+    </animation>
+  </animations>
+  <compositions>
+    <composition name="player_composition" namePath="compositions/player_composition" layerCount="1">
+      <layer name="Слой 1" frameCount="1">
+        <element type="animation" source="legs_idle" name="" x="-13.4" y="0.35"/>
+        <element type="animation" source="body_animation" name="" x="-13.5" y="-26.9"/>
+      </layer>
+    </composition>
+  </compositions>
+</document>
